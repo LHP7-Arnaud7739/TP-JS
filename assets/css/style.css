@@ -1,0 +1,19 @@
+@font-face {
+    font-family: "superhero";
+    src: url("../polices/SUPERHERO.eot") format("eot"),
+         url("../polices/SUPERHERO.svg") format("svg"),
+         url("../polices/SUPERHERO.ttf") format("ttf"),
+         url("../polices/SUPERHERO.woff") format("woff");
+}
+
+body {
+    background: url("../img/background.jpg")
+}
+
+h1{
+    font-family: "superhero", sans-serif;
+}
+
+.titleBand {
+    background-color: #ed171e;
+}
