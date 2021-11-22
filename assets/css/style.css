@@ -17,3 +17,8 @@ h1{
 .titleBand {
     background-color: #ed171e;
 }
+
+.mini {
+    width: 100%;
+    height: auto;
+}
