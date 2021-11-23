@@ -101,7 +101,7 @@ fetch("./assets/js/products.json")
         document.getElementById("content").addEventListener("click", (e) => {
             if (e.target.nodeName == "A") {
                 count++
-                document.getElementById("caddy").innerHTML = `<i class="fas fa-shopping-basket h4 text-white mt-2"> Mon Panier (${count})</i>`
+                document.getElementById("caddy").innerHTML = `<i class="fas fa-shopping-basket h4 text-white mt-2 myLogo"><span>${count}</span></i>`
                 let verifId = e.target.id.split("-").pop()
                 let presentElement = 0
                 caddyArray.forEach(element => {
@@ -184,9 +184,9 @@ fetch("./assets/js/products.json")
                     count--
                 }
                 if(count == 0){
-                    document.getElementById("caddy").innerHTML = `<i class="fas fa-shopping-basket h4 text-white mt-2"> Mon Panier</i>`
+                    document.getElementById("caddy").innerHTML = `<i class="fas fa-shopping-basket h4 text-white mt-2 myLogo"></i>`
                 } else {
-                    document.getElementById("caddy").innerHTML = `<i class="fas fa-shopping-basket h4 text-white mt-2"> Mon Panier (${count})</i>`
+                    document.getElementById("caddy").innerHTML = `<i class="fas fa-shopping-basket h4 text-white mt-2 myLogo"><span>${count}</span></i>`
                 }
                 
                 
