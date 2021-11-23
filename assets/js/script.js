@@ -29,7 +29,8 @@ fetch("./assets/js/products.json")
                         <img src="${element.img}" class="card-img-top" alt="Photo de T-Shirt Marvel ${index + 1}">
                         <div class="card-body text-center">
                             <h5 class="card-title">${element.title}</h5>
-                            <p class="card-text">Prix : ${element.price}€</p>
+                            <p class="card-text">Prix : ${element.price}€<br>Réf : ${element.id}</p>
+
                             <a href="#" class="btn btn-danger" id="button-${element.id}">Ajouter au panier</a>
                         </div>
                     </div>
@@ -149,7 +150,7 @@ fetch("./assets/js/products.json")
                     `
             <tr class="align-baseline h5">
                 <td width="5%"><img class="mini" src=${element.img} alt="..."></td>
-                <td width="25%"><p>${element.title}</p></td>
+                <td width="25%"><p>${element.title} / Réf : ${element.id}</p></td>
                 <td width="10%" id="qtyObj${index}" class="text-center">
                     <a href="#" class="btn btn-secondary bg-secondary" id="qtyLess${index}">-</a>
                     <span id="">${element.qty}</span>
