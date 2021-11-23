@@ -13,16 +13,18 @@
 </head>
 
 <body>
-    <div class="sticky-top">    
-        <div class="row titleBand text-white text-center p-3">
+    <div class="sticky-top">
+        <div class="row titleBand text-white text-center p-0 m-0 pt-2 pb-2">
             <div class="col-6">
                 <h1><a href="#" class="text-decoration-none text-white" id="home">Marvel Store</a></h1>
             </div>
             <div class="col-6">
-                <a href="#" class="text-decoration-none text-white" id="caddy" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fas fa-shopping-basket h4 text-white mt-2"> Mon Panier</i></a>
+                <a href="#" class="text-decoration-none text-white" id="caddy" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop"><i class="fas fa-shopping-basket h4 text-white mt-2"> Mon
+                        Panier</i></a>
             </div>
         </div>
-        <nav class="navbar navbar-expand-lg bg-secondary navbar-dark p-0 pt-1 pb-1" id="myNav">
+        <nav class="navbar navbar-expand-lg bg-secondary navbar-dark p-0pt-1 pb-1" id="myNav">
             <div class="container d-lg-none justify-content-end">
                 <div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
@@ -55,7 +57,7 @@
         </nav>
     </div>
     <div id="contain">
-        <div class="row justify-content-center" id="content">
+        <div class="row justify-content-center m-0 p-0" id="content">
             <div id="carouselExampleIndicators" class="carousel slide carousel-fade p-0 w-25 mt-5"
                 data-bs-ride="carousel">
                 <div class="carousel-indicators">
@@ -98,22 +100,38 @@
         </div>
     </div>
 
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl" id="myModal">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Panier</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Panier</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="contentCaddy">
+                    Votre panier est vide
+                </div>
+                <div class="modal-footer">
+                    <p id="totalPrice" class="h5"></p>
+                </div>
             </div>
-            <div class="modal-body" id="contentCaddy">
-                Votre panier est vide
-            </div>
-            <div class="modal-footer">
-                <p id="totalPrice" class="h5"></p>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    Votre commande a bien été validée !
+                </div>
+                <div class="modal-footer m-auto">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="reset" onclick="location.reload()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">

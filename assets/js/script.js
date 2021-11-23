@@ -5,6 +5,9 @@ let caddyArray = []
 fetch("./assets/js/products.json")
     .then(response => response.json())
     .then(data => {
+
+// Création des pages au clic sur liens de la navbar (vetements, figurines ou goodies)
+
         document.getElementById("myLinks").addEventListener("click", (e) => {
             if (e.target.nodeName == "A") {
                 let myData
@@ -39,6 +42,8 @@ fetch("./assets/js/products.json")
             }
 
         })
+
+// Création de la page d'accueil à l'appui sur le logo du site
 
         document.getElementById("home").addEventListener("click", (e) => {
             if (e.target.nodeName == "A") {
@@ -91,6 +96,8 @@ fetch("./assets/js/products.json")
             }
         })
 
+// Placement des objets dans le panier grâce à un tableau et vérification si objet déjà présent ou non. Ajout de 1 a la quantité de cette objet dans le JSON
+
         document.getElementById("content").addEventListener("click", (e) => {
             if (e.target.nodeName == "A") {
                 count++
@@ -136,6 +143,8 @@ fetch("./assets/js/products.json")
             }
         })
 
+// Création du panier à l'appui sur le bouton "Mon Panier" à l'aide du tableau contenant les objets ajoutés.
+
         document.getElementById("caddy").addEventListener("click", (e) => {
 
             if (e.target.nodeName == "I" && caddyArray[0] != undefined) {
@@ -144,22 +153,24 @@ fetch("./assets/js/products.json")
                 caddyArray.forEach((element, index) => {
                     document.getElementById("caddyTable").innerHTML +=
                         `
-            <tr class="align-baseline h5">
-                <td width="5%"><img class="mini" src=${element.img} alt="..."></td>
-                <td width="25%"><p>${element.title} / Réf : ${element.id}</p></td>
-                <td width="10%" id="qtyObj${index}" class="text-center">
-                    <a href="#" class="btn btn-secondary bg-secondary" id="qtyLess-${index}">-</a>
-                    <span id="myQty${index}">${element.qty}</span>
-                    <a href="#" class="btn btn-secondary bg-secondary" id="qtyMore-${index}">+</a>
-                </td>
-                <td width="10%" class="text-center"><p id="myPrice${index}">${element.price * element.qty}€</p></td>
-            </tr>
-            `
+                        <tr class="align-baseline h5">
+                            <td width="5%"><img class="mini" src=${element.img} alt="..."></td>
+                            <td width="25%"><p>${element.title} / Réf : ${element.id}</p></td>
+                            <td width="10%" id="qtyObj${index}" class="text-center">
+                                <a href="#" class="btn btn-secondary bg-secondary" id="qtyLess-${index}">-</a>
+                                <span id="myQty${index}">${element.qty}</span>
+                                <a href="#" class="btn btn-secondary bg-secondary" id="qtyMore-${index}">+</a>
+                            </td>
+                            <td width="10%" class="text-center"><p id="myPrice${index}">${element.price * element.qty}€</p></td>
+                        </tr>
+                        `
                     totalPrice += element.price * element.qty
                 });
-                document.getElementById("totalPrice").innerHTML = `Total : ${totalPrice}€`
+                document.getElementById("totalPrice").innerHTML = `Total : ${totalPrice}€ <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" id="valid">Commander</button>`
             }
         })
+
+// Augmentation et diminution des quantités des objets du panier ou suppression de ces derniers lorsque le nombre atteint 0 
 
         document.getElementById("myModal").addEventListener("click", (e) => {
             if (e.target.nodeName == "A") {
@@ -203,7 +214,7 @@ fetch("./assets/js/products.json")
                             `
                         totalPrice += element.price * element.qty
                     });
-                    document.getElementById("totalPrice").innerHTML = `Total : ${totalPrice}€`
+                    document.getElementById("totalPrice").innerHTML = `Total : ${totalPrice}€ <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" id="valid">Commander</button>`
 
                 } else {
                     document.getElementById(`myQty${myIndex}`).innerHTML = caddyArray[myIndex].qty
@@ -212,17 +223,12 @@ fetch("./assets/js/products.json")
                     caddyArray.forEach((element) => {
                         totalPrice += element.price * element.qty
                     })
-                    document.getElementById("totalPrice").innerHTML = `Total : ${totalPrice}€`
+                    document.getElementById("totalPrice").innerHTML = `Total : ${totalPrice}€ <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" id="valid">Commander</button>`
                 }
                 if(caddyArray[0] == undefined){
                     document.getElementById("contentCaddy").innerHTML = "Votre panier est vide"
+                    document.getElementById("totalPrice").innerHTML = ""
                 }
-
-
             }
-
         })
-
-
-
     })
