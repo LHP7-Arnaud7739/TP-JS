@@ -3,25 +3,25 @@ let totalPrice = 0
 let caddyArray = []
 
 fetch("./assets/js/products.json")
-.then(response => response.json())
-.then(data => {
-    document.getElementById("myLinks").addEventListener("click", (e) => {
-        if(e.target.nodeName == "A") {
-            let myData
-            if(e.target.id == "clothes") {
-                myData = data.clothes
-            } else if (e.target.id == "figures") {
-                myData = data.figures
-            } else if (e.target.id == "goodies") {
-                myData = data.goodies}
-            else {
-                myData = ""
-            }
-            console.log(myData)
-            document.getElementById("contain").classList.add("container")
-            document.getElementById("content").classList.add("bg-white", "mt-4")
-            document.getElementById("content").innerHTML = ""
-            myData.forEach((element, index) => {
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("myLinks").addEventListener("click", (e) => {
+            if(e.target.nodeName == "A") {
+                let myData
+                if(e.target.id == "clothes") {
+                    myData = data.clothes
+                } else if (e.target.id == "figures") {
+                    myData = data.figures
+                } else if (e.target.id == "goodies") {
+                    myData = data.goodies}
+                else {
+                    myData = ""
+                }
+                console.log(myData)
+                document.getElementById("contain").classList.add("container")
+                document.getElementById("content").classList.add("bg-white", "mt-4")
+                document.getElementById("content").innerHTML = ""
+                myData.forEach((element, index) => {
                 document.getElementById("content").innerHTML +=
                 `
                 <div class="col-4">
@@ -92,47 +92,78 @@ fetch("./assets/js/products.json")
     })
 
     document.getElementById("content").addEventListener("click", (e) => {
-        if(e.target.nodeName == "A") {
+        if (e.target.nodeName == "A") {
             count++
             document.getElementById("caddy").innerHTML = `<i class="fas fa-shopping-basket h4 text-white mt-2"> Mon Panier (${count})</i>`
+            let verifId = e.target.id.split("-").pop()
+            let presentElement = 0
+            caddyArray.forEach(element => {
+                if (verifId == element.id) {
+                    presentElement++
+                }
+            })
             let firstChar = e.target.id.split("-").pop().charAt(0)
             let lastChar = (e.target.id.split("-").pop().charAt(2)) - 1
-            switch(firstChar) {
-                case "1":
-                    caddyArray.push(data.clothes[lastChar])
-                    break;
-                case "2":
-                    caddyArray.push(data.figures[lastChar])
-                    break;
-                case "3":
-                    caddyArray.push(data.goodies[lastChar])
-                    break;
-                default:
-                    break;
+            if (presentElement == 0) {
+                switch (firstChar) {
+                    case "1":
+                        caddyArray.push(data.clothes[lastChar])
+                        break;
+                    case "2":
+                        caddyArray.push(data.figures[lastChar])
+                        break;
+                    case "3":
+                        caddyArray.push(data.goodies[lastChar])
+                        break;
+                    default:
+                        break;
+                }
+                console.log(caddyArray)
+            } else {
+                switch (firstChar) {
+                    case "1":
+                        data.clothes[lastChar].qty++
+                        console.log(data.clothes[lastChar].qty)
+                        break;
+                    case "2":
+                        data.figures[lastChar].qty++
+                        console.log(data.figures[lastChar].qty)
+                        break;
+                    case "3":
+                        caddyArray.push(data.goodies[lastChar])
+                        break;
+                    default:
+                        break;
+                }
             }
-            console.log(caddyArray)
         }
     })
 
     document.getElementById("caddy").addEventListener("click", (e) => {
 
-        if(e.target.nodeName == "I" && caddyArray[0] != undefined) {
+        if (e.target.nodeName == "I" && caddyArray[0] != undefined) {
             document.getElementById("contentCaddy").innerHTML = `<table class="table table-bordered"><tbody id="caddyTable"></tbody></table>`
             totalPrice = 0
-            caddyArray.forEach(element => {
+            caddyArray.forEach((element,index) => {
                 document.getElementById("caddyTable").innerHTML +=
-                `
-                <tr class="align-baseline h5">
-                    <td width="5%"><img class="mini" src=${element.img} alt="..."></td>
-                    <td width="50%"><p>${element.title}</p></td>
-                    <td width="20%"><p>${element.price}€</p></td>
-                </tr>
-                `
-                totalPrice += element.price
+                    `
+            <tr class="align-baseline h5">
+                <td width="5%"><img class="mini" src=${element.img} alt="..."></td>
+                <td width="25%"><p>${element.title}</p></td>
+                <td width="10%" id="qtyObj${index}" class="text-center">
+                    <a href="#" class="btn btn-secondary bg-secondary" id="qtyLess${index}">-</a>
+                    <span id="">${element.qty}</span>
+                    <a href="#" class="btn btn-secondary bg-secondary" id="qtyMore${index}">+</a>
+                </td>
+                <td width="10%" class="text-center"><p>${element.price * element.qty}€</p></td>
+            </tr>
+            `
+                totalPrice += element.price * element.qty
             });
             document.getElementById("totalPrice").innerHTML = `Total : ${totalPrice}€`
         }
     })
+
 
 
 })
