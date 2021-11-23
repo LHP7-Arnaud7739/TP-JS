@@ -12,7 +12,9 @@ fetch("./assets/js/products.json")
                 myData = data.clothes
             } else if (e.target.id == "figures") {
                 myData = data.figures
-            } else {
+            } else if (e.target.id == "goodies") {
+                myData = data.goodies}
+            else {
                 myData = ""
             }
             console.log(myData)

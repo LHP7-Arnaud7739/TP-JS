@@ -63,5 +63,36 @@
             "img": "./assets/img/fig5.jpg",
             "price": 15.99
         }
-    ]
+    ],
+    "goodies": [{
+        "id": 301,
+        "title": "Lampe Captain America",
+        "img": "./assets/img/good1.jpg",
+        "price": 35.99
+    },
+    {
+        "id": 302,
+        "title": "Mug Marvel",
+        "img": "./assets/img/good2.jpg",
+        "price": 12.99
+    },
+    {
+        "id": 303,
+        "title": "Lot porte clé marvel",
+        "img": "./assets/img/good3.jpg",
+        "price": 37.99
+    },
+    {
+        "id": 304,
+        "title": "Lampe spideman",
+        "img": "./assets/img/good4.jpg",
+        "price": 35.99
+    },
+    {
+        "id": 305,
+        "title": "Porte clé Black Panther",
+        "img": "./assets/img/good5.jpg",
+        "price": 10.19
+    }
+]
 }
