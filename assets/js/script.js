@@ -6,24 +6,23 @@ fetch("./assets/js/products.json")
     .then(response => response.json())
     .then(data => {
         document.getElementById("myLinks").addEventListener("click", (e) => {
-            if(e.target.nodeName == "A") {
+            if (e.target.nodeName == "A") {
                 let myData
-                if(e.target.id == "clothes") {
+                if (e.target.id == "clothes") {
                     myData = data.clothes
                 } else if (e.target.id == "figures") {
                     myData = data.figures
                 } else if (e.target.id == "goodies") {
-                    myData = data.goodies}
-                else {
+                    myData = data.goodies
+                } else {
                     myData = ""
                 }
-                console.log(myData)
                 document.getElementById("contain").classList.add("container")
                 document.getElementById("content").classList.add("bg-white", "mt-4")
                 document.getElementById("content").innerHTML = ""
                 myData.forEach((element, index) => {
-                document.getElementById("content").innerHTML +=
-                `
+                    document.getElementById("content").innerHTML +=
+                        `
                 <div class="col-4">
                     <div class="card m-auto mt-4 mb-4" style="width: 18rem;">
                         <img src="${element.img}" class="card-img-top" alt="Photo de T-Shirt Marvel ${index + 1}">
@@ -36,17 +35,17 @@ fetch("./assets/js/products.json")
                     </div>
                 </div>
                 `
-            })
-        }
+                })
+            }
 
-    })
+        })
 
-    document.getElementById("home").addEventListener("click", (e) => {
-        if(e.target.nodeName == "A"){
-            document.getElementById("contain").classList.remove("container")
-            document.getElementById("content").classList.remove("bg-white", "mt-4")
-            document.getElementById("content").innerHTML =
-            `
+        document.getElementById("home").addEventListener("click", (e) => {
+            if (e.target.nodeName == "A") {
+                document.getElementById("contain").classList.remove("container")
+                document.getElementById("content").classList.remove("bg-white", "mt-4")
+                document.getElementById("content").innerHTML =
+                    `
             <div class="row justify-content-center" id="content">
                 <div id="carouselExampleIndicators" class="carousel slide carousel-fade p-0 w-25 mt-5"
                     data-bs-ride="carousel">
@@ -89,82 +88,141 @@ fetch("./assets/js/products.json")
                 </div>
             </div>
             `
-        }
-    })
+            }
+        })
 
-    document.getElementById("content").addEventListener("click", (e) => {
-        if (e.target.nodeName == "A") {
-            count++
-            document.getElementById("caddy").innerHTML = `<i class="fas fa-shopping-basket h4 text-white mt-2"> Mon Panier (${count})</i>`
-            let verifId = e.target.id.split("-").pop()
-            let presentElement = 0
-            caddyArray.forEach(element => {
-                if (verifId == element.id) {
-                    presentElement++
+        document.getElementById("content").addEventListener("click", (e) => {
+            if (e.target.nodeName == "A") {
+                count++
+                document.getElementById("caddy").innerHTML = `<i class="fas fa-shopping-basket h4 text-white mt-2"> Mon Panier (${count})</i>`
+                let verifId = e.target.id.split("-").pop()
+                let presentElement = 0
+                caddyArray.forEach(element => {
+                    if (verifId == element.id) {
+                        presentElement++
+                    }
+                })
+                let firstChar = e.target.id.split("-").pop().charAt(0)
+                let lastChar = (e.target.id.split("-").pop().charAt(2)) - 1
+                if (presentElement == 0) {
+                    switch (firstChar) {
+                        case "1":
+                            caddyArray.push(data.clothes[lastChar])
+                            break;
+                        case "2":
+                            caddyArray.push(data.figures[lastChar])
+                            break;
+                        case "3":
+                            caddyArray.push(data.goodies[lastChar])
+                            break;
+                        default:
+                            break;
+                    }
                 }
-            })
-            let firstChar = e.target.id.split("-").pop().charAt(0)
-            let lastChar = (e.target.id.split("-").pop().charAt(2)) - 1
-            if (presentElement == 0) {
-                switch (firstChar) {
-                    case "1":
-                        caddyArray.push(data.clothes[lastChar])
-                        break;
-                    case "2":
-                        caddyArray.push(data.figures[lastChar])
-                        break;
-                    case "3":
-                        caddyArray.push(data.goodies[lastChar])
-                        break;
-                    default:
-                        break;
-                }
-                console.log(caddyArray)
-            } else {
                 switch (firstChar) {
                     case "1":
                         data.clothes[lastChar].qty++
-                        console.log(data.clothes[lastChar].qty)
                         break;
                     case "2":
                         data.figures[lastChar].qty++
-                        console.log(data.figures[lastChar].qty)
                         break;
                     case "3":
-                        caddyArray.push(data.goodies[lastChar])
+                        data.goodies[lastChar].qty++
                         break;
                     default:
                         break;
                 }
+                
             }
-        }
-    })
+        })
 
-    document.getElementById("caddy").addEventListener("click", (e) => {
+        document.getElementById("caddy").addEventListener("click", (e) => {
 
-        if (e.target.nodeName == "I" && caddyArray[0] != undefined) {
-            document.getElementById("contentCaddy").innerHTML = `<table class="table table-bordered"><tbody id="caddyTable"></tbody></table>`
-            totalPrice = 0
-            caddyArray.forEach((element,index) => {
-                document.getElementById("caddyTable").innerHTML +=
-                    `
+            if (e.target.nodeName == "I" && caddyArray[0] != undefined) {
+                document.getElementById("contentCaddy").innerHTML = `<table class="table table-bordered"><tbody id="caddyTable"></tbody></table>`
+                totalPrice = 0
+                caddyArray.forEach((element, index) => {
+                    document.getElementById("caddyTable").innerHTML +=
+                        `
             <tr class="align-baseline h5">
                 <td width="5%"><img class="mini" src=${element.img} alt="..."></td>
                 <td width="25%"><p>${element.title} / Réf : ${element.id}</p></td>
                 <td width="10%" id="qtyObj${index}" class="text-center">
-                    <a href="#" class="btn btn-secondary bg-secondary" id="qtyLess${index}">-</a>
-                    <span id="">${element.qty}</span>
-                    <a href="#" class="btn btn-secondary bg-secondary" id="qtyMore${index}">+</a>
+                    <a href="#" class="btn btn-secondary bg-secondary" id="qtyLess-${index}">-</a>
+                    <span id="myQty${index}">${element.qty}</span>
+                    <a href="#" class="btn btn-secondary bg-secondary" id="qtyMore-${index}">+</a>
                 </td>
-                <td width="10%" class="text-center"><p>${element.price * element.qty}€</p></td>
+                <td width="10%" class="text-center"><p id="myPrice${index}">${element.price * element.qty}€</p></td>
             </tr>
             `
-                totalPrice += element.price * element.qty
-            });
-            document.getElementById("totalPrice").innerHTML = `Total : ${totalPrice}€`
-        }
+                    totalPrice += element.price * element.qty
+                });
+                document.getElementById("totalPrice").innerHTML = `Total : ${totalPrice}€`
+            }
+        })
+
+        document.getElementById("myModal").addEventListener("click", (e) => {
+            if (e.target.nodeName == "A") {
+                myIndex = e.target.id.split("-").pop()
+                moreOrLess = e.target.id.split("-").shift()
+                if (moreOrLess == "qtyMore") {
+                    caddyArray[myIndex].qty++
+                    count++
+                } else if (moreOrLess == "qtyLess") {
+                    caddyArray[myIndex].qty--
+                    count--
+                }
+                if(count == 0){
+                    document.getElementById("caddy").innerHTML = `<i class="fas fa-shopping-basket h4 text-white mt-2"> Mon Panier</i>`
+                } else {
+                    document.getElementById("caddy").innerHTML = `<i class="fas fa-shopping-basket h4 text-white mt-2"> Mon Panier (${count})</i>`
+                }
+                
+                
+                if (caddyArray[myIndex].qty < 1) {
+                    if(myIndex == 0){
+                        caddyArray.shift()
+                    } else {
+                        caddyArray.splice(myIndex, 1)
+                    }
+                    document.getElementById("contentCaddy").innerHTML = `<table class="table table-bordered"><tbody id="caddyTable"></tbody></table>`
+                    totalPrice = 0
+                    caddyArray.forEach((element, index) => {
+                        document.getElementById("caddyTable").innerHTML +=
+                            `
+                            <tr class="align-baseline h5">
+                                <td width="5%"><img class="mini" src=${element.img} alt="..."></td>
+                                <td width="25%"><p>${element.title} / Réf : ${element.id}</p></td>
+                                <td width="10%" id="qtyObj${index}" class="text-center">
+                                    <a href="#" class="btn btn-secondary bg-secondary" id="qtyLess-${index}">-</a>
+                                    <span id="myQty${index}">${element.qty}</span>
+                                    <a href="#" class="btn btn-secondary bg-secondary" id="qtyMore-${index}">+</a>
+                                </td>
+                                <td width="10%" class="text-center"><p id="myPrice${index}">${element.price * element.qty}€</p></td>
+                            </tr>
+                            `
+                        totalPrice += element.price * element.qty
+                    });
+                    document.getElementById("totalPrice").innerHTML = `Total : ${totalPrice}€`
+
+                } else {
+                    document.getElementById(`myQty${myIndex}`).innerHTML = caddyArray[myIndex].qty
+                    document.getElementById(`myPrice${myIndex}`).innerHTML = `${(caddyArray[myIndex].price * caddyArray[myIndex].qty)}€`
+                    totalPrice = 0
+                    caddyArray.forEach((element) => {
+                        totalPrice += element.price * element.qty
+                    })
+                    document.getElementById("totalPrice").innerHTML = `Total : ${totalPrice}€`
+                }
+                if(caddyArray[0] == undefined){
+                    document.getElementById("contentCaddy").innerHTML = "Votre panier est vide"
+                }
+
+
+            }
+
+        })
+
+
+
     })
-
-
-
-})

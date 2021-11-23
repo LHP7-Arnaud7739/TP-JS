@@ -3,35 +3,35 @@
             "id": 101,
             "title": "T-shirt Fresque Avengers",
             "img": "./assets/img/vet1.jpg",
-            "qty": 1,
+            "qty": 0,
             "price": 20.99
         },
         {
             "id": 102,
             "title": "T-shirt GrootPool",
             "img": "./assets/img/vet2.jpg",
-            "qty": 1,
+            "qty": 0,
             "price": 20.99
         },
         {
             "id": 103,
             "title": "T-shirt The Beatles",
             "img": "./assets/img/vet3.jpg",
-            "qty": 1,
+            "qty": 0,
             "price": 20.99
         },
         {
             "id": 104,
             "title": "T-shirt Iron-Spider",
             "img": "./assets/img/vet4.jpg",
-            "qty": 1,
+            "qty": 0,
             "price": 20.99
         },
         {
             "id": 105,
             "title": "T-shirt Spider-Pool",
             "img": "./assets/img/vet5.jpg",
-            "qty": 1,
+            "qty": 0,
             "price": 20.99
         }
     ],
@@ -40,35 +40,35 @@
             "id": 201,
             "title": "Figurine Black Panther",
             "img": "./assets/img/fig1.jpg",
-            "qty": 1,
+            "qty": 0,
             "price": 15.99
         },
         {
             "id": 202,
             "title": "Figurine Hulk",
             "img": "./assets/img/fig2.jpg",
-            "qty": 1,
+            "qty": 0,
             "price": 15.99
         },
         {
             "id": 203,
             "title": "Figurine Iron-Man",
             "img": "./assets/img/fig3.jpg",
-            "qty": 1,
+            "qty": 0,
             "price": 15.99
         },
         {
             "id": 204,
             "title": "Figurine Ronan",
             "img": "./assets/img/fig4.jpg",
-            "qty": 1,
+            "qty": 0,
             "price": 15.99
         },
         {
             "id": 205,
             "title": "Figurine Thor",
             "img": "./assets/img/fig5.jpg",
-            "qty": 1,
+            "qty": 0,
             "price": 15.99
         }
     ],
@@ -76,35 +76,35 @@
             "id": 301,
             "title": "Lampe Captain America",
             "img": "./assets/img/good1.jpg",
-            "qty": 1,
+            "qty": 0,
             "price": 35.99
         },
         {
             "id": 302,
             "title": "Mug Marvel",
             "img": "./assets/img/good2.jpg",
-            "qty": 1,
+            "qty": 0,
             "price": 12.99
         },
         {
             "id": 303,
             "title": "Lot porte clé marvel",
             "img": "./assets/img/good3.jpg",
-            "qty": 1,
+            "qty": 0,
             "price": 37.99
         },
         {
             "id": 304,
             "title": "Lampe spideman",
             "img": "./assets/img/good4.jpg",
-            "qty": 1,
+            "qty": 0,
             "price": 35.99
         },
         {
             "id": 305,
             "title": "Porte clé Black Panther",
             "img": "./assets/img/good5.jpg",
-            "qty": 1,
+            "qty": 0,
             "price": 10.19
         }
     ]
