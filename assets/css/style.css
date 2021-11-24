@@ -69,3 +69,35 @@ footer {
 i{
     font-style: inherit;
 }
+
+.alignAll {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.mediaQ {
+    width: 5%;
+}
+
+.myText {
+    font-size: 2rem;
+}
+
+.alignMe {
+    vertical-align: middle;
+}
+
+.parent {
+    display: table;
+}
+
+.child {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+@media screen and (max-width:900px) {
+    .mediaQ {
+        width: 25%;
+    }
+}
