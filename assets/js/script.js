@@ -161,12 +161,12 @@ fetch("./assets/js/products.json")
                                 <span id="myQty${index}">${element.qty}</span>
                                 <a href="#" class="btn btn-secondary bg-secondary" id="qtyMore-${index}">+</a>
                             </td>
-                            <td width="10%" class="text-center"><p id="myPrice${index}">${element.price * element.qty}€</p></td>
+                            <td width="10%" class="text-center"><p id="myPrice${index}">${Number(element.price * element.qty).toFixed(2)}€</p></td>
                         </tr>
                         `
                     totalPrice += element.price * element.qty
                 });
-                document.getElementById("totalPrice").innerHTML = `Total : ${totalPrice}€ <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" id="valid">Commander</button>`
+                document.getElementById("totalPrice").innerHTML = `Total : ${Number(totalPrice).toFixed(2)}€ <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" id="valid">Commander</button>`
             }
         })
 
@@ -209,21 +209,21 @@ fetch("./assets/js/products.json")
                                     <span id="myQty${index}">${element.qty}</span>
                                     <a href="#" class="btn btn-secondary bg-secondary" id="qtyMore-${index}">+</a>
                                 </td>
-                                <td width="10%" class="text-center"><p id="myPrice${index}">${element.price * element.qty}€</p></td>
+                                <td width="10%" class="text-center"><p id="myPrice${index}">${Number(element.price * element.qty).toFixed(2)}€</p></td>
                             </tr>
                             `
                         totalPrice += element.price * element.qty
                     });
-                    document.getElementById("totalPrice").innerHTML = `Total : ${totalPrice}€ <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" id="valid">Commander</button>`
+                    document.getElementById("totalPrice").innerHTML = `Total : ${Number(totalPrice).toFixed(2)}€ <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" id="valid">Commander</button>`
 
                 } else {
                     document.getElementById(`myQty${myIndex}`).innerHTML = caddyArray[myIndex].qty
-                    document.getElementById(`myPrice${myIndex}`).innerHTML = `${(caddyArray[myIndex].price * caddyArray[myIndex].qty)}€`
+                    document.getElementById(`myPrice${myIndex}`).innerHTML = `${(Number(caddyArray[myIndex].price * caddyArray[myIndex].qty).toFixed(2))}€`
                     totalPrice = 0
                     caddyArray.forEach((element) => {
                         totalPrice += element.price * element.qty
                     })
-                    document.getElementById("totalPrice").innerHTML = `Total : ${totalPrice}€ <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" id="valid">Commander</button>`
+                    document.getElementById("totalPrice").innerHTML = `Total : ${Number(totalPrice).toFixed(2)}€ <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" id="valid">Commander</button>`
                 }
                 if(caddyArray[0] == undefined){
                     document.getElementById("contentCaddy").innerHTML = "Votre panier est vide"
