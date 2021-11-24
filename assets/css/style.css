@@ -1,16 +1,19 @@
 @font-face {
     font-family: "superhero";
     src: url("../polices/SUPERHERO.eot") format("eot"),
-         url("../polices/SUPERHERO.svg") format("svg"),
-         url("../polices/SUPERHERO.ttf") format("ttf"),
-         url("../polices/SUPERHERO.woff") format("woff");
+        url("../polices/SUPERHERO.svg") format("svg"),
+        url("../polices/SUPERHERO.ttf") format("ttf"),
+        url("../polices/SUPERHERO.woff") format("woff");
 }
 
 body {
+    /* ARNAUD */
+    height: 1400px;
+    /* ARNAUD */
     background: url("../img/background.jpg")
 }
 
-h1{
+h1 {
     font-family: "superhero", sans-serif;
 }
 
@@ -22,16 +25,18 @@ h1{
     width: 100%;
     height: auto;
 }
+/* ARNAUD= */
 footer {
     font-family: "superhero", sans-serif;
     background-color: #ed171e;
-    float: none;
-    margin: 0;
     bottom: 0;
-    position: relative;
-    clear: both;
-    margin-top: -150px;
-    height: 100px;
+    position: fixed;
+    right: 0;
+    left: 0;
+    height: 50px;
+/* ARNAUD */
+
+
 }
 
 .paiement {
@@ -59,4 +64,7 @@ footer {
     align-items: center;
     justify-content: center;
     border: 4px solid #ed171e;
+}
+i{
+    font-size: inherit;
 }

@@ -101,7 +101,7 @@ fetch("./assets/js/products.json")
         document.getElementById("content").addEventListener("click", (e) => {
             if (e.target.nodeName == "A") {
                 count++
-                document.getElementById("caddy").innerHTML = `<i class="fas fa-shopping-basket h4 text-white mt-2 myLogo"><span>${count}</span></i>`
+                document.getElementById("caddy").innerHTML = `<i class="myLogo"><img src="https://img.icons8.com/material-outlined/24/ffffff/shopping-cart--v1.png"/><span>${count}</span></i>`
                 let verifId = e.target.id.split("-").pop()
                 let presentElement = 0
                 caddyArray.forEach(element => {
@@ -147,7 +147,7 @@ fetch("./assets/js/products.json")
 
         document.getElementById("caddy").addEventListener("click", (e) => {
 
-            if (e.target.nodeName == "I" && caddyArray[0] != undefined) {
+            if (e.target.nodeName == "IMG" && caddyArray[0] != undefined) {
                 document.getElementById("contentCaddy").innerHTML = `<table class="table table-bordered"><tbody id="caddyTable"></tbody></table>`
                 totalPrice = 0
                 caddyArray.forEach((element, index) => {
@@ -184,9 +184,9 @@ fetch("./assets/js/products.json")
                     count--
                 }
                 if(count == 0){
-                    document.getElementById("caddy").innerHTML = `<i class="fas fa-shopping-basket h4 text-white mt-2 myLogo"></i>`
+                    document.getElementById("caddy").innerHTML = `<i class="myLogo"><img src="https://img.icons8.com/material-outlined/24/ffffff/shopping-cart--v1.png"/></i>`
                 } else {
-                    document.getElementById("caddy").innerHTML = `<i class="fas fa-shopping-basket h4 text-white mt-2 myLogo"><span>${count}</span></i>`
+                    document.getElementById("caddy").innerHTML = `<i class="myLogo"><img src="https://img.icons8.com/material-outlined/24/ffffff/shopping-cart--v1.png"/><span>${count}</span></i>`
                 }
                 
                 
